@@ -1,0 +1,26 @@
+body {
+  background-color: #333;
+  color: #ccc;
+
+}
+.white-text {
+  color: #fff;
+}
+.blue {
+  background-color: #334b80;
+}
+.table-bg {
+  background-color: #383838;
+}
+.off-white-text {
+  color: #ccc;
+}
+.data-row {
+  border-color: rgb(204, 204, 204)
+}
+.data-header {
+  border-color:rgb(65, 65, 65);
+}
+.data-row:hover {
+  color: inherit;
+}
