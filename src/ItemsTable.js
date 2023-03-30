@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { ArrowDown, ArrowUp } from 'react-bootstrap-icons';
+import { useNavigate } from 'react-router-dom';
 
 function needsToFixed(value) {
   return value % 1 !== 0 ? value.toFixed(2) : value;
@@ -8,7 +9,7 @@ function needsToFixed(value) {
 
 const ItemsTable = ({ items, worldID }) => {
   const [sortConfig, setSortConfig] = useState(null);
-  const history = useHistory();
+  const history = useNavigate();
 
   const handleRowClick = (itemId) => {
     history.push(`/recipe/${itemId}`);
@@ -99,6 +100,7 @@ const ItemsTable = ({ items, worldID }) => {
       <th onClick={() => handleSort(`marketboard.${worldID}.currentAverage`)}>Current Average {getArrow(`marketboard.${worldID}.currentAverage`)}</th>
           <th onClick={() => handleSort(`marketboard.${worldID}.overallAverage`)}>Overall Average {getArrow(`marketboard.${worldID}.overallAverage`)}</th>
           <th onClick={() => handleSort(`marketboard.${worldID}.price`)}>Lowest Price {getArrow(`marketboard.${worldID}.price`)}</th>
+          <th onClick={() => handleSort(`marketboard.${worldID}.cost`)}>Cost {getArrow(`marketboard.${worldID}.cost`)}</th>
           <th onClick={() => handleSort(`marketboard.${worldID}.saleVelocity`)}>Sale Velocity {getArrow(`marketboard.${worldID}.saleVelocity`)}</th>
     </tr>
   </thead>
@@ -110,6 +112,7 @@ const ItemsTable = ({ items, worldID }) => {
           currentAverage: undefined,
           overallAverage: undefined,
           price: undefined,
+          cost: undefined,
           saleVelocity: undefined,
         }
       }
@@ -123,6 +126,7 @@ const ItemsTable = ({ items, worldID }) => {
               <td className="align-middle">{marketboardData.currentAverage === undefined ? "--" : needsToFixed(marketboardData.currentAverage) }</td>
               <td className="align-middle">{marketboardData.overallAverage === undefined ? "--" : needsToFixed(marketboardData.overallAverage)}</td>
               <td className="align-middle">{ marketboardData.price === undefined ? "--" : marketboardData.price}</td>
+              <td className="align-middle">{marketboardData.cost === undefined ? "--" : needsToFixed(marketboardData.cost)}</td>
               <td className="align-middle">{marketboardData.saleVelocity === undefined ? "--" : needsToFixed(marketboardData.saleVelocity)}</td>
             </tr>
       );

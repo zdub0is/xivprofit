@@ -8,6 +8,8 @@ const useApiData = (worldID,
   shopPriceUpper,
   shopSellPriceLower,
   shopSellPriceUpper,
+  costLower,
+  costUpper,
   saleVelocityLower,
   saleVelocityUpper,
   fetchData, 
@@ -42,6 +44,12 @@ const useApiData = (worldID,
       if (shopSellPriceUpper) {
         queryParams.push(`sgt=${shopSellPriceUpper}`);
       }
+      if (costLower) {
+        queryParams.push(`clt=${costLower}`);
+      }
+      if (costUpper) {
+        queryParams.push(`cgt=${costUpper}`);
+      }
       if (saleVelocityLower) {
         queryParams.push(`svlt=${saleVelocityLower}`);
       }
@@ -66,6 +74,8 @@ const useApiData = (worldID,
     shopPriceUpper,
     shopSellPriceLower,
     shopSellPriceUpper,
+    costLower,
+    costUpper,
     saleVelocityLower,
     saleVelocityUpper,
     fetchData, 
