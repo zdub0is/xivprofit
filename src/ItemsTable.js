@@ -2,8 +2,17 @@ import { useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { ArrowDown, ArrowUp } from 'react-bootstrap-icons';
 
+function needsToFixed(value) {
+  return value % 1 !== 0 ? value.toFixed(2) : value;
+}
+
 const ItemsTable = ({ items, worldID }) => {
   const [sortConfig, setSortConfig] = useState(null);
+  const history = useHistory();
+
+  const handleRowClick = (itemId) => {
+    history.push(`/recipe/${itemId}`);
+  };
 
   const sortedItems = items ? items.sort((a, b) => {
     if (sortConfig === null) {
@@ -23,6 +32,13 @@ const ItemsTable = ({ items, worldID }) => {
         valueB = valueB === "No recipes" ? false : true
     }
 
+    if (valueA === undefined) {
+      return 1;
+    }
+
+    if (valueB === undefined) {
+      return -1;
+    }
     if (valueA < valueB) {
       return direction === 'ascending' ? -1 : 1;
     }
@@ -64,7 +80,7 @@ const ItemsTable = ({ items, worldID }) => {
   return (
     <Table bordered hover responsive>
       <thead>
-        <tr className='blue white-text'>
+        <tr className='blue white-text table-sticky-header'>
           <th onClick={() => handleSort('_id')}>
             ID {getArrow('_id')}
           </th>
@@ -88,19 +104,26 @@ const ItemsTable = ({ items, worldID }) => {
   </thead>
   <tbody>
     {sortedItems.map((item) => {
-      const marketboardData = item.marketboard[Object.keys(item.marketboard)[0]];
-
+      let marketboardData = item.marketboard[Object.keys(item.marketboard)[0]];
+      if (marketboardData === undefined) {
+        marketboardData = {
+          currentAverage: undefined,
+          overallAverage: undefined,
+          price: undefined,
+          saleVelocity: undefined,
+        }
+      }
       return (
-        <tr className="table-bg off-white-text data-row"key={item._id}>
+        <tr className="table-bg off-white-text data-row"key={item._id} onClick={() => handleRowClick(item._id)}>
           <td className="align-middle">{item._id}</td>
               <td className="align-middle">{item.Name}</td>
               <td className="align-middle">{item.Recipes === "No recipes" ? "No" : "Yes"}</td>
               <td className="align-middle">{item.shopPrice}</td>
               <td className="align-middle">{item.shopSellPrice}</td>
-              <td className="align-middle">{marketboardData.currentAverage.toFixed(2)}</td>
-              <td className="align-middle">{marketboardData.overallAverage.toFixed(2)}</td>
-              <td className="align-middle">{marketboardData.price}</td>
-              <td className="align-middle">{marketboardData.saleVelocity.toFixed(2)}</td>
+              <td className="align-middle">{marketboardData.currentAverage === undefined ? "--" : needsToFixed(marketboardData.currentAverage) }</td>
+              <td className="align-middle">{marketboardData.overallAverage === undefined ? "--" : needsToFixed(marketboardData.overallAverage)}</td>
+              <td className="align-middle">{ marketboardData.price === undefined ? "--" : marketboardData.price}</td>
+              <td className="align-middle">{marketboardData.saleVelocity === undefined ? "--" : needsToFixed(marketboardData.saleVelocity)}</td>
             </tr>
       );
     })}

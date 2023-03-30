@@ -1,6 +1,17 @@
 import { useState, useEffect } from 'react';
 
-const useApiData = (worldID, noRecipe, hasRecipe, searchName, shopPrice, shopSellPrice, saleVelocity, fetchData, setFetchData) => {
+const useApiData = (worldID,
+  noRecipe,
+  hasRecipe,
+  searchName,
+  shopPriceLower,
+  shopPriceUpper,
+  shopSellPriceLower,
+  shopSellPriceUpper,
+  saleVelocityLower,
+  saleVelocityUpper,
+  fetchData, 
+  setFetchData) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -19,14 +30,23 @@ const useApiData = (worldID, noRecipe, hasRecipe, searchName, shopPrice, shopSel
       if (searchName) {
         queryParams.push(`name=${encodeURIComponent(searchName)}`);
       }
-      if (shopPrice) {
-        queryParams.push(`splt=${shopPrice}`);
+      if (shopPriceLower) {
+        queryParams.push(`splt=${shopPriceLower}`);
       }
-      if (shopSellPrice) {
-        queryParams.push(`slt=${shopSellPrice}`);
+      if (shopPriceUpper) {
+        queryParams.push(`spgt=${shopPriceUpper}`);
       }
-      if (saleVelocity) {
-        queryParams.push(`svgt=${saleVelocity}`);
+      if (shopSellPriceLower) {
+        queryParams.push(`slt=${shopSellPriceLower}`);
+      }
+      if (shopSellPriceUpper) {
+        queryParams.push(`sgt=${shopSellPriceUpper}`);
+      }
+      if (saleVelocityLower) {
+        queryParams.push(`svlt=${saleVelocityLower}`);
+      }
+      if (saleVelocityUpper) {
+        queryParams.push(`svgt=${saleVelocityUpper}`);
       }
 
       const queryString = queryParams.length > 0 ? '?' + queryParams.join('&') : '';
@@ -38,7 +58,18 @@ const useApiData = (worldID, noRecipe, hasRecipe, searchName, shopPrice, shopSel
     };
 
     fetchItems();
-  }, [worldID, noRecipe, hasRecipe, searchName, shopPrice, shopSellPrice, saleVelocity, fetchData, setFetchData]);
+  }, [worldID,
+    noRecipe,
+    hasRecipe,
+    searchName,
+    shopPriceLower,
+    shopPriceUpper,
+    shopSellPriceLower,
+    shopSellPriceUpper,
+    saleVelocityLower,
+    saleVelocityUpper,
+    fetchData, 
+    setFetchData]);
 
   return items;
 };
