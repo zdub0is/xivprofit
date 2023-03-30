@@ -7,15 +7,14 @@ import RecipeDetails from "./RecipeDetails";
 import Homepage from "./Homepage";
 
 function App() {
-  
   return (
     <Router>
-    <Container className="white-text">
-    <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/recipe/:id" component={<RecipeDetails />} />
-    </Routes>
-    </Container>
+      <Container className="white-text">
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/recipe/:id" element={<RecipeDetails />} />
+        </Routes>
+      </Container>
     </Router>
   );
 }

@@ -12,7 +12,7 @@ const ItemsTable = ({ items, worldID }) => {
   const history = useNavigate();
 
   const handleRowClick = (itemId) => {
-    history.push(`/recipe/${itemId}`);
+    history(`/recipe/${itemId}`);
   };
 
   const sortedItems = items ? items.sort((a, b) => {
@@ -101,6 +101,7 @@ const ItemsTable = ({ items, worldID }) => {
           <th onClick={() => handleSort(`marketboard.${worldID}.overallAverage`)}>Overall Average {getArrow(`marketboard.${worldID}.overallAverage`)}</th>
           <th onClick={() => handleSort(`marketboard.${worldID}.price`)}>Lowest Price {getArrow(`marketboard.${worldID}.price`)}</th>
           <th onClick={() => handleSort(`marketboard.${worldID}.cost`)}>Cost {getArrow(`marketboard.${worldID}.cost`)}</th>
+          <th onClick={() => handleSort(`marketboard.${worldID}.profitMargin`)}>Profit Margin {getArrow(`marketboard.${worldID}.profitMargin`)}</th>
           <th onClick={() => handleSort(`marketboard.${worldID}.saleVelocity`)}>Sale Velocity {getArrow(`marketboard.${worldID}.saleVelocity`)}</th>
     </tr>
   </thead>
@@ -113,6 +114,7 @@ const ItemsTable = ({ items, worldID }) => {
           overallAverage: undefined,
           price: undefined,
           cost: undefined,
+          profitMargin: undefined,
           saleVelocity: undefined,
         }
       }
@@ -125,8 +127,9 @@ const ItemsTable = ({ items, worldID }) => {
               <td className="align-middle">{item.shopSellPrice}</td>
               <td className="align-middle">{marketboardData.currentAverage === undefined ? "--" : needsToFixed(marketboardData.currentAverage) }</td>
               <td className="align-middle">{marketboardData.overallAverage === undefined ? "--" : needsToFixed(marketboardData.overallAverage)}</td>
-              <td className="align-middle">{ marketboardData.price === undefined ? "--" : marketboardData.price}</td>
+              <td className="align-middle">{marketboardData.price === undefined ? "--" : marketboardData.price}</td>
               <td className="align-middle">{marketboardData.cost === undefined ? "--" : needsToFixed(marketboardData.cost)}</td>
+              <td className="align-middle">{marketboardData.cost === undefined ? "--" : needsToFixed(marketboardData.profitMargin)}</td>
               <td className="align-middle">{marketboardData.saleVelocity === undefined ? "--" : needsToFixed(marketboardData.saleVelocity)}</td>
             </tr>
       );
