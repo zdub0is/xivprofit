@@ -8,7 +8,7 @@ import Homepage from "./Homepage";
 
 function App() {
   return (
-    <Router>
+    <Router basename="https://zdub0is.github.io/xivprofit">
       <Container className="white-text">
         <Routes>
           <Route path="/" element={<Homepage />} />
