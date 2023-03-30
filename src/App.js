@@ -3,8 +3,8 @@ import { Container } from "react-bootstrap";
 import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import "./App.css";
-import RecipeDetails from "./RecipeDetails";
-import Homepage from "./Homepage";
+import RecipeDetails from "./pages/RecipeDetails";
+import Homepage from "./pages/Homepage";
 
 function App() {
   return (

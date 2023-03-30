@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, Tab, Table } from "react-bootstrap";
 import Loading from "./Loading";
-import CustomFooter from "./CustomFooter";
+import CustomFooter from "../CustomFooter";
 
 const craftingJobs ={
   8 : "Carpenter",

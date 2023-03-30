@@ -2,8 +2,9 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import ItemsTable from "./ItemsTable";
-import useApiData from "./useApiData";
+import useApiData from "../useApiData";
 import Loading from "./Loading";
+import CustomFooter from "../CustomFooter";
 
 
 const worldOptions = [
@@ -193,6 +194,7 @@ function Homepage() {
       </Form>
 
       {fetchData ? <Loading /> : <ItemsTable items={items} worldID={worldID}/>}
+      <CustomFooter />
       </>
   );
 }
