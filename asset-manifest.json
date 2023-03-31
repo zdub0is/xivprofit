@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/xivprofit/static/css/main.2caafd8b.css",
-    "main.js": "/xivprofit/static/js/main.4343c0c4.js",
+    "main.css": "/xivprofit/static/css/main.10393330.css",
+    "main.js": "/xivprofit/static/js/main.f57644c6.js",
     "static/js/787.dec091b4.chunk.js": "/xivprofit/static/js/787.dec091b4.chunk.js",
     "index.html": "/xivprofit/index.html",
-    "main.2caafd8b.css.map": "/xivprofit/static/css/main.2caafd8b.css.map",
-    "main.4343c0c4.js.map": "/xivprofit/static/js/main.4343c0c4.js.map",
+    "main.10393330.css.map": "/xivprofit/static/css/main.10393330.css.map",
+    "main.f57644c6.js.map": "/xivprofit/static/js/main.f57644c6.js.map",
     "787.dec091b4.chunk.js.map": "/xivprofit/static/js/787.dec091b4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2caafd8b.css",
-    "static/js/main.4343c0c4.js"
+    "static/css/main.10393330.css",
+    "static/js/main.f57644c6.js"
   ]
 }
