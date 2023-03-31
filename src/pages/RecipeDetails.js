@@ -92,7 +92,7 @@ const RecipeDetails = () => {
                       return (
                         <li>
                           {ingredient.quantity} {ingredient.hasRecipe ? (
-                            <a href={`/recipe/${ingredient.id}`}>
+                            <a href={`xivprofit/recipe/${ingredient.id}`}>
                               {ingredient.name} *
                             </a>) : ingredient.name}
                         </li>
